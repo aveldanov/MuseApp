@@ -114,13 +114,9 @@
 		21070C6A2762F31F008CE7AF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				21070C552762A141008CE7AF /* HomeViewController.swift */,
-				21070C6D2762FCC2008CE7AF /* ProfileViewController.swift */,
-				21070C6F2762FCFB008CE7AF /* TabBarViewController.swift */,
-				21070C712762FD1A008CE7AF /* SignInViewController.swift */,
-				21070C732762FD23008CE7AF /* SignUpViewController.swift */,
-				21070C752762FD34008CE7AF /* ViewPostViewController.swift */,
-				21070C772762FD3F008CE7AF /* CreateNewPostViewController.swift */,
+				21070C81276302B2008CE7AF /* Core Tabs */,
+				21070C82276302CA008CE7AF /* Auth */,
+				21070C83276302D2008CE7AF /* Posts */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -144,6 +140,34 @@
 				21070C7F2762FDF5008CE7AF /* StorageManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		21070C81276302B2008CE7AF /* Core Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				21070C552762A141008CE7AF /* HomeViewController.swift */,
+				21070C6D2762FCC2008CE7AF /* ProfileViewController.swift */,
+				21070C6F2762FCFB008CE7AF /* TabBarViewController.swift */,
+			);
+			path = "Core Tabs";
+			sourceTree = "<group>";
+		};
+		21070C82276302CA008CE7AF /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				21070C712762FD1A008CE7AF /* SignInViewController.swift */,
+				21070C732762FD23008CE7AF /* SignUpViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		21070C83276302D2008CE7AF /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				21070C752762FD34008CE7AF /* ViewPostViewController.swift */,
+				21070C772762FD3F008CE7AF /* CreateNewPostViewController.swift */,
+			);
+			path = Posts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
