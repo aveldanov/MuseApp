@@ -13,8 +13,8 @@ final class IAPManager{
     static let shared = IAPManager()
     private init(){}
     
-    func isPremium(){
-        
+    func isPremium()->Bool{
+        return false //for now
     }
     
     func subscribe(){

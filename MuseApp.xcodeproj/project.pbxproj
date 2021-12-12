@@ -27,6 +27,7 @@
 		212BC0DE2765992F00B5A0A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212BC0DD2765992F00B5A0A1 /* User.swift */; };
 		212BC0E22765994A00B5A0A1 /* BlogPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212BC0E12765994A00B5A0A1 /* BlogPost.swift */; };
 		212BC0E42765B59F00B5A0A1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 212BC0E32765B59F00B5A0A1 /* README.md */; };
+		212BC0E72765B5F500B5A0A1 /* PayWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212BC0E62765B5F500B5A0A1 /* PayWallViewController.swift */; };
 		51F95C8B7CA1E76388B7ED0E /* Pods_MuseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519324FBFDFB56654FE1FD74 /* Pods_MuseApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		212BC0DD2765992F00B5A0A1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		212BC0E12765994A00B5A0A1 /* BlogPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPost.swift; sourceTree = "<group>"; };
 		212BC0E32765B59F00B5A0A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		212BC0E62765B5F500B5A0A1 /* PayWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWallViewController.swift; sourceTree = "<group>"; };
 		47072854E5D8EB793CC64C35 /* Pods-MuseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuseApp.debug.xcconfig"; path = "Target Support Files/Pods-MuseApp/Pods-MuseApp.debug.xcconfig"; sourceTree = "<group>"; };
 		519324FBFDFB56654FE1FD74 /* Pods_MuseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MuseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30E7FF58B9C50EC55AFEC55 /* Pods-MuseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuseApp.release.xcconfig"; path = "Target Support Files/Pods-MuseApp/Pods-MuseApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		21070C6A2762F31F008CE7AF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				212BC0E52765B5D400B5A0A1 /* Other */,
 				21070C81276302B2008CE7AF /* Core Tabs */,
 				21070C82276302CA008CE7AF /* Auth */,
 				21070C83276302D2008CE7AF /* Posts */,
@@ -187,6 +190,14 @@
 				21070C772762FD3F008CE7AF /* CreateNewPostViewController.swift */,
 			);
 			path = Posts;
+			sourceTree = "<group>";
+		};
+		212BC0E52765B5D400B5A0A1 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				212BC0E62765B5F500B5A0A1 /* PayWallViewController.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		49B2FD9A790E21E580A27377 /* Pods */ = {
@@ -329,6 +340,7 @@
 				21070C762762FD34008CE7AF /* ViewPostViewController.swift in Sources */,
 				21070C7C2762FDD9008CE7AF /* DatabaseManager.swift in Sources */,
 				21070C802762FDF5008CE7AF /* StorageManager.swift in Sources */,
+				212BC0E72765B5F500B5A0A1 /* PayWallViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
