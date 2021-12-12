@@ -15,7 +15,6 @@ class PayWallViewController: UIViewController {
     //TODO:
     // Close button / Title
     
-
     
     // Pricing and produce
     // Call To Action(CTA) Buttons
@@ -40,11 +39,7 @@ class PayWallViewController: UIViewController {
         return button
     }()
     
-    
-    
-    
     // Terms of Service
-    
     
     private let termsView: UITextView = {
         let textView = UITextView() // use TextView so it can be scrollable vs Label
@@ -55,10 +50,7 @@ class PayWallViewController: UIViewController {
         textView.text = "This is an auto-renewable Subscription. You will be charged before each pay period. You can cancel anytime by going into your Settings -> Subscriptions. Restore Purchases if previously subscribed."
         return textView
     }()
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Muse Premium"
@@ -71,20 +63,32 @@ class PayWallViewController: UIViewController {
         setupButtons()
     }
     
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        header.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height/3.2)
+        header.frame = CGRect(x: 0,
+                              y: view.safeAreaInsets.top,
+                              width: view.width,
+                              height: view.height/3.2)
         
+        termsView.frame = CGRect(x: 10,
+                                 y: view.height-100,
+                                 width: view.width-20,
+                                 height: 100)
         
-        termsView.frame = CGRect(x: 10, y: view.height-100, width: view.width-20, height: 100)
+        restoreButton.frame = CGRect(x: 25,
+                                     y: termsView.top-70,
+                                     width: view.width-50,
+                                     height: 50)
+        
+        buyButton.frame = CGRect(x: 25,
+                                 y: restoreButton.top-60,
+                                 width: view.width-50,
+                                 height: 50)
     }
-    
     
     private func setupCloseButton(){
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapClose))
     }
-    
     
     private func setupButtons(){
         buyButton.addTarget(self, action: #selector(didTapSubscribe), for: .touchUpInside)
