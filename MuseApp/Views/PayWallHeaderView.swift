@@ -13,7 +13,7 @@ class PayWallHeaderView: UIView {
     // HeaderImage
     private let headerImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(systemName: "crown.fill"))
-        imageView.frame = CGRect(x: 0, y: 0, width: 220, height: 220)
+        imageView.frame = CGRect(x: 0, y: 0, width: 110, height: 110)
         imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -33,7 +33,7 @@ class PayWallHeaderView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        headerImageView.center = center
+        headerImageView.frame = CGRect(x: (bounds.width-110)/2, y: (bounds.height-110)/2, width: 110, height: 110)
     }
     
     
