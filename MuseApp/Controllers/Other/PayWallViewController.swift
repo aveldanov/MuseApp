@@ -31,8 +31,7 @@ class PayWallViewController: UIViewController {
     
     private let restoreButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Restore Purchase", for: .normal)
-        button.backgroundColor = .systemBlue
+        button.setTitle("Restore Purchases", for: .normal)
         button.setTitleColor(.link, for: .normal)
         button.layer.cornerRadius = 8
         button.layer.masksToBounds = true
@@ -75,15 +74,15 @@ class PayWallViewController: UIViewController {
                                  width: view.width-20,
                                  height: 100)
         
-        restoreButton.frame = CGRect(x: 25,
-                                     y: termsView.top-70,
-                                     width: view.width-50,
-                                     height: 50)
-        
         buyButton.frame = CGRect(x: 25,
                                  y: restoreButton.top-60,
                                  width: view.width-50,
                                  height: 50)
+        
+        restoreButton.frame = CGRect(x: 25,
+                                     y: termsView.top-70,
+                                     width: view.width-50,
+                                     height: 50)
     }
     
     private func setupCloseButton(){
