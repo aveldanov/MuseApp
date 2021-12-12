@@ -25,7 +25,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }else{
             let signinVC = SignInViewController()
             signinVC.navigationItem.largeTitleDisplayMode = .always
-            vc = UINavigationController(rootViewController: signinVC)
+            let navVC = UINavigationController(rootViewController: signinVC)
+            navVC.navigationBar.prefersLargeTitles = true
+            vc = navVC
         }
         window.rootViewController = vc
         window.makeKeyAndVisible()
