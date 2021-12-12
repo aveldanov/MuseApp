@@ -8,6 +8,10 @@
 import UIKit
 
 class PayWallViewController: UIViewController {
+    
+    private let header = PayWallHeaderView()
+
+    
     //TODO:
     // Close button / Title
     
@@ -23,6 +27,14 @@ class PayWallViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        view.addSubview(header)
+        setupCloseButton()
+    }
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        header.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height/3.2)
     }
     
     
