@@ -141,8 +141,8 @@
 			children = (
 				21070C5A2762A144008CE7AF /* Assets.xcassets */,
 				21070C512762A141008CE7AF /* AppDelegate.swift */,
-				212BC0DB27643F0500B5A0A1 /* GoogleService-Info.plist */,
 				21070C532762A141008CE7AF /* SceneDelegate.swift */,
+				212BC0DB27643F0500B5A0A1 /* GoogleService-Info.plist */,
 			);
 			path = Other;
 			sourceTree = "<group>";

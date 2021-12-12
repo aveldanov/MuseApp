@@ -19,7 +19,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         //TODO: Update VC to SignVC if not SignedIn
-        let vc = TabBarViewController()
+        let vc: UIViewController
+        if AuthManager.shared.isSignedIn{
+            vc = TabBarViewController()
+        }else{
+            let signinVC = SignInViewController()
+            signinVC.navigationItem.largeTitleDisplayMode = .always
+            vc = UINavigationController(rootViewController: signinVC)
+        }
         window.rootViewController = vc
         window.makeKeyAndVisible()
         self.window = window
