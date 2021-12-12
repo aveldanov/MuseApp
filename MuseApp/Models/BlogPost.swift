@@ -8,6 +8,7 @@
 import Foundation
 
 struct BlogPost{
+    let id: String
     let title: String
     let timestamp: TimeInterval
     let headerImageURL: URL?
