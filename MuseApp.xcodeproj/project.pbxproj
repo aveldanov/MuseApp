@@ -30,6 +30,7 @@
 		212BC0E72765B5F500B5A0A1 /* PayWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212BC0E62765B5F500B5A0A1 /* PayWallViewController.swift */; };
 		212BC0EA2765CCAD00B5A0A1 /* PayWallHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212BC0E92765CCAD00B5A0A1 /* PayWallHeaderView.swift */; };
 		212BC0EC2765CF4200B5A0A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212BC0EB2765CF4200B5A0A1 /* Extensions.swift */; };
+		212BC0EE2766913E00B5A0A1 /* PayWallDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212BC0ED2766913E00B5A0A1 /* PayWallDescriptionView.swift */; };
 		51F95C8B7CA1E76388B7ED0E /* Pods_MuseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519324FBFDFB56654FE1FD74 /* Pods_MuseApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		212BC0E82765BFBE00B5A0A1 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		212BC0E92765CCAD00B5A0A1 /* PayWallHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWallHeaderView.swift; sourceTree = "<group>"; };
 		212BC0EB2765CF4200B5A0A1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		212BC0ED2766913E00B5A0A1 /* PayWallDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWallDescriptionView.swift; sourceTree = "<group>"; };
 		47072854E5D8EB793CC64C35 /* Pods-MuseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuseApp.debug.xcconfig"; path = "Target Support Files/Pods-MuseApp/Pods-MuseApp.debug.xcconfig"; sourceTree = "<group>"; };
 		519324FBFDFB56654FE1FD74 /* Pods_MuseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MuseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30E7FF58B9C50EC55AFEC55 /* Pods-MuseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuseApp.release.xcconfig"; path = "Target Support Files/Pods-MuseApp/Pods-MuseApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				21070C5C2762A144008CE7AF /* LaunchScreen.storyboard */,
+				212BC0ED2766913E00B5A0A1 /* PayWallDescriptionView.swift */,
 				212BC0E92765CCAD00B5A0A1 /* PayWallHeaderView.swift */,
 			);
 			path = Views;
@@ -334,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21070C562762A141008CE7AF /* HomeViewController.swift in Sources */,
+				212BC0EE2766913E00B5A0A1 /* PayWallDescriptionView.swift in Sources */,
 				212BC0EC2765CF4200B5A0A1 /* Extensions.swift in Sources */,
 				21070C7E2762FDE6008CE7AF /* AuthManager.swift in Sources */,
 				212BC0E22765994A00B5A0A1 /* BlogPost.swift in Sources */,
