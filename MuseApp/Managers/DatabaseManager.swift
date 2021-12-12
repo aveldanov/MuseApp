@@ -13,7 +13,5 @@ final class DatabaseManager{
     static let shared = DatabaseManager()
     private init(){}
     private let database = Firestore.firestore()
-    
-    
 }
 
