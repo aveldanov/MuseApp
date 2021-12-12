@@ -12,9 +12,9 @@ class PayWallHeaderView: UIView {
     
     // HeaderImage
     private let headerImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "crown.fill"))
+        let imageView = UIImageView(image: UIImage(systemName: "lightbulb.fill"))
         imageView.frame = CGRect(x: 0, y: 0, width: 110, height: 110)
-        imageView.tintColor = .white
+        imageView.tintColor = .systemYellow
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -24,7 +24,11 @@ class PayWallHeaderView: UIView {
         super.init(frame: frame)
         clipsToBounds = true
         addSubview(headerImageView)
-        backgroundColor = .systemPink
+        if #available(iOS 15.0, *) {
+            backgroundColor = .systemCyan
+        } else {
+            backgroundColor = .systemBlue
+        }
     }
 
     required init?(coder: NSCoder) {
