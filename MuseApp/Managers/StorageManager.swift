@@ -28,7 +28,7 @@ final class StorageManager{
     
     
     
-    public func uploadBlogHeaderImage(image: UIImage?, completion: @escaping (Bool)->Void){
+    public func uploadBlogHeaderImage(blogPost: BlogPost, image: UIImage?, completion: @escaping (Bool)->Void){
         
     }
     
