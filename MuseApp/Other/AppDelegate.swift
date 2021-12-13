@@ -19,13 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         Purchases.configure(withAPIKey: "appl_XVfbNuASZNRcmFWgJZkkIwwXRzZ")
-        IAPManager.shared.fetchPackages { package in
-            guard let package = package else {
-                return
-            }
-            print("[AppDelegate] Got package")
-            IAPManager.shared.subscribe(package: package)
-        }
+        IAPManager.shared.getSubscriptionStatus(completion: nil)
         return true
     }
 

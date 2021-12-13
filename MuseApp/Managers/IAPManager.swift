@@ -17,18 +17,20 @@ final class IAPManager{
         return UserDefaults.standard.bool(forKey: "premium")
     }
     
-    public func getSubscriptionStatus(completion: @escaping (Bool)->Void){
+    public func getSubscriptionStatus(completion: ((Bool)->Void)?){
         Purchases.shared.purchaserInfo { info, error in
             guard let entitlements = info?.entitlements, error == nil else{
                 return
             }
             //checking if subscribed (entitled for Premium)
             if entitlements.all["Premium"]?.isActive == true{
+                print("[IAPManager] Got update Status of Subscribed")
                 UserDefaults.standard.set(true, forKey: "premium")
-                completion(true)
+                completion?(true)
             }else{
+                print("[IAPManager] Got update Status of NOT Subscribed")
                 UserDefaults.standard.set(false, forKey: "premium")
-                completion(false)
+                completion?(false)
             }
         
         }
@@ -44,9 +46,11 @@ final class IAPManager{
             completion(package)
         }
     }
-    public func subscribe(package: Purchases.Package){
+    
+    public func subscribe(package: Purchases.Package, completion: @escaping (Bool)->Void){
         guard !isPremium() else{
             print("[IAPManager] User already subscribed")
+            completion(true)
             return
         }
         
@@ -61,7 +65,16 @@ final class IAPManager{
                 print("purchasing")
             case .purchased:
                 print("purchased \(entitlements)")
-                UserDefaults.standard.set(true, forKey: "premium")
+                //checking if subscribed (entitled for Premium)
+                if entitlements.all["Premium"]?.isActive == true{
+                    print("[IAPManager] Purchased")
+                    UserDefaults.standard.set(true, forKey: "premium")
+                    completion(true)
+                }else{
+                    print("[IAPManager] Purchase failed")
+                    UserDefaults.standard.set(false, forKey: "premium")
+                    completion(false)
+                }
             case .failed:
                 print("failed")
 
@@ -78,12 +91,24 @@ final class IAPManager{
         }
     }
     
-    public func restorePurchases(){
+    public func restorePurchases(completion: @escaping (Bool)->Void){
         Purchases.shared.restoreTransactions  { info, error in
             guard let entitlements = info?.entitlements, error == nil else{
                 return
             }
+            
         print("Restored \(entitlements) ")
+            
+            if entitlements.all["Premium"]?.isActive == true{
+                print("[IAPManager] Restored")
+                UserDefaults.standard.set(true, forKey: "premium")
+                completion(true)
+            }else{
+                print("[IAPManager] Restore failed")
+                UserDefaults.standard.set(false, forKey: "premium")
+                completion(false)
+            }
+            
         }
         
     }
