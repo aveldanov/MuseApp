@@ -60,7 +60,6 @@ class PayWallViewController: UIViewController {
         view.addSubview(restoreButton)
         view.addSubview(termsView)
         view.addSubview(heroView)
-        heroView.backgroundColor = .systemYellow
         setupCloseButton()
         setupButtons()
     }

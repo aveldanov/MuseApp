@@ -12,16 +12,16 @@ class PayWallDescriptionView: UIView {
     private let descriptorLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 22, weight: .medium)
+        label.font = .systemFont(ofSize: 26, weight: .medium)
         label.numberOfLines = 0
-        label.text = "Join Muse Premium to read unlimited posts!"
+        label.text = "Join Muse Premium to read unlimited articles and browse thoughsands of posts!"
         return label
     }()
     
     private let priceLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 18, weight: .thin)
+        label.font = .systemFont(ofSize: 22, weight: .regular)
         label.numberOfLines = 1
         label.text = "$4.99 / month"
         return label
