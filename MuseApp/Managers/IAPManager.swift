@@ -18,6 +18,12 @@ final class IAPManager{
     }
     
     public func getSubscriptionStatus(){
+        Purchases.shared.purchaserInfo { info, error in
+            guard let entitlements = info?.entitlements, error == nil else{
+                return
+            }
+        print(entitlements)
+        }
     }
     
     
