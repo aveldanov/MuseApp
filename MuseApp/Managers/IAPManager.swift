@@ -17,25 +17,74 @@ final class IAPManager{
         return UserDefaults.standard.bool(forKey: "premium")
     }
     
-    public func getSubscriptionStatus(){
+    public func getSubscriptionStatus(completion: @escaping (Bool)->Void){
         Purchases.shared.purchaserInfo { info, error in
             guard let entitlements = info?.entitlements, error == nil else{
                 return
             }
-        print(entitlements)
+            //checking if subscribed (entitled for Premium)
+            if entitlements.all["Premium"]?.isActive == true{
+                UserDefaults.standard.set(true, forKey: "premium")
+                completion(true)
+            }else{
+                UserDefaults.standard.set(false, forKey: "premium")
+                completion(false)
+            }
+        
         }
     }
     
     
     public func fetchPackages(completion: @escaping (Purchases.Package?)->Void){
-        
+        Purchases.shared.offerings { offerings, error in
+            guard let package = offerings?.offering(identifier: "default")?.availablePackages.first, error == nil else{
+                completion(nil)
+                return
+            }
+            completion(package)
+        }
     }
     public func subscribe(package: Purchases.Package){
+        guard !isPremium() else{
+            print("[IAPManager] User already subscribed")
+            return
+        }
         
+        Purchases.shared.purchasePackage(package) { transaction, info, error, userCancelledTransaction in
+            guard let transaction = transaction, let entitlements = info?.entitlements, error == nil, !userCancelledTransaction else{
+                return
+            }
+            
+            switch transaction.transactionState{
+                
+            case .purchasing:
+                print("purchasing")
+            case .purchased:
+                print("purchased \(entitlements)")
+                UserDefaults.standard.set(true, forKey: "premium")
+            case .failed:
+                print("failed")
+
+            case .restored:
+                print("restored")
+
+            case .deferred:
+                print("deferred")
+
+            @unknown default:
+                print("default")
+
+            }
+        }
     }
     
     public func restorePurchases(){
-        
+        Purchases.shared.restoreTransactions  { info, error in
+            guard let entitlements = info?.entitlements, error == nil else{
+                return
+            }
+        print("Restored \(entitlements) ")
+        }
         
     }
     
