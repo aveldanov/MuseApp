@@ -14,14 +14,21 @@ final class IAPManager{
     private init(){}
     // a55e6fb2cc8642e9a8f41f95be98c786
     func isPremium()->Bool{
-        return false //for now
+        return UserDefaults.standard.bool(forKey: "premium")
     }
     
-    func subscribe(){
+    public func getSubscriptionStatus(){
+    }
+    
+    
+    public func fetchPackages(completion: @escaping (Purchases.Package?)->Void){
+        
+    }
+    public func subscribe(package: Purchases.Package){
         
     }
     
-    func restorePurchases(){
+    public func restorePurchases(){
         
         
     }
