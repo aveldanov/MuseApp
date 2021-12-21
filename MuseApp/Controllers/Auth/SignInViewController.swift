@@ -25,8 +25,6 @@ class SignInViewController: UIViewController {
 
         title = "Sign In"
         view.backgroundColor = .systemBackground
-                
-
     }
     
 

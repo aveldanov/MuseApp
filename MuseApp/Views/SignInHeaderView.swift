@@ -9,12 +9,38 @@ import UIKit
 
 class SignInHeaderView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    private let imageView: UIImageView = {
+       let imageView = UIImageView(image: UIImage(named: "icon"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .systemPink
+        return imageView
+    }()
+    
+    private let label: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 20, weight: .medium)
+        label.text = "Explore million of posts"
+        return label
+    }()
+    
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        clipsToBounds = true
+        addSubview(imageView)
+        addSubview(label)
     }
-    */
-
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
 }
