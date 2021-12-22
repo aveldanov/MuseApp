@@ -14,6 +14,14 @@ class SignInViewController: UIViewController {
     
     // Email Field
     
+    private let emailField: UITextField = {
+        let field = UITextField()
+        field.keyboardType = .emailAddress
+        
+        
+        return field
+    }()
+    
     // password field
     
     // Sign in button
@@ -31,7 +39,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        headerView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height/4)
+        headerView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height/5)
     }
 
 
