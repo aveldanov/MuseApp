@@ -92,7 +92,9 @@ class SignInViewController: UIViewController {
     
     
     @objc func didTapCreateButton(){
-        
+        let vc = SignUpViewController()
+        vc.title = "Create Account"
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
