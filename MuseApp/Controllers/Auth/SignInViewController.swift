@@ -10,6 +10,7 @@ import UIKit
 class SignInViewController: UIViewController {
 
     // Header View
+    private let headerView = SignInHeaderView()
     
     // Email Field
     
@@ -25,6 +26,7 @@ class SignInViewController: UIViewController {
 
         title = "Sign In"
         view.backgroundColor = .systemBackground
+        view.addSubview(headerView)
     }
     
 
