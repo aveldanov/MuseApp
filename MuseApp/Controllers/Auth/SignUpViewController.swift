@@ -13,6 +13,20 @@ class SignUpViewController: UIViewController {
     // Header View
     private let headerView = SignInHeaderView()
     
+    
+    // Name Field
+    
+    private let nameField: UITextField = {
+        let field = UITextField()
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
+        field.leftViewMode = .always
+        field.placeholder = "Full Name"
+        field.backgroundColor = .secondarySystemBackground
+        field.layer.cornerRadius = 8
+        field.layer.masksToBounds = true
+        return field
+    }()
+    
     // Email Field
     
     private let emailField: UITextField = {
@@ -60,6 +74,7 @@ class SignUpViewController: UIViewController {
         title = "Create Account"
         view.backgroundColor = .systemBackground
         view.addSubview(headerView)
+        view.addSubview(nameField)
         view.addSubview(emailField)
         view.addSubview(passwordField)
         view.addSubview(signUpButton)
@@ -71,7 +86,9 @@ class SignUpViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         headerView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height/5)
-        emailField.frame = CGRect(x: 20, y: headerView.bottom, width: view.width-40, height: 50)
+        nameField.frame = CGRect(x: 20, y: headerView.bottom, width: view.width-40, height: 50)
+
+        emailField.frame = CGRect(x: 20, y: nameField.bottom+10, width: view.width-40, height: 50)
         passwordField.frame = CGRect(x: 20, y: emailField.bottom+10, width: view.width-40, height: 50)
         signUpButton.frame = CGRect(x: 20, y: passwordField.bottom+10, width: view.width-40, height: 50)
 
