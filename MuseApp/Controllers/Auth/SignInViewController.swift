@@ -29,6 +29,10 @@ class SignInViewController: UIViewController {
         view.addSubview(headerView)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        headerView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height/4)
+    }
 
 
 }
