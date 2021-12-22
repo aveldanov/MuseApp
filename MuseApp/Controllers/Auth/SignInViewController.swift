@@ -78,6 +78,10 @@ class SignInViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         headerView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height/5)
+        emailField.frame = CGRect(x: 20, y: headerView.bottom, width: view.width-40, height: 50)
+        passwordField.frame = CGRect(x: 20, y: emailField.bottom+10, width: view.width-40, height: 50)
+        signInButton.frame = CGRect(x: 20, y: headerView.bottom, width: view.width-40, height: 50)
+        createAccountButton.frame = CGRect(x: 20, y: headerView.bottom, width: view.width-40, height: 50)
     }
     
     
