@@ -17,7 +17,7 @@ class SignInViewController: UIViewController {
     private let emailField: UITextField = {
         let field = UITextField()
         field.keyboardType = .emailAddress
-        
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
         
         return field
     }()
