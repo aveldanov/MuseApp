@@ -8,7 +8,7 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-
+    
     // Header View
     private let headerView = SignInHeaderView()
     
@@ -18,20 +18,51 @@ class SignInViewController: UIViewController {
         let field = UITextField()
         field.keyboardType = .emailAddress
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
-        
+        field.placeholder = "Email Address"
+        field.backgroundColor = .secondarySystemBackground
+        field.layer.cornerRadius = 8
+        field.layer.masksToBounds = true
         return field
     }()
     
     // password field
     
+    private let passwordField: UITextField = {
+        let field = UITextField()
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
+        field.placeholder = "Password"
+        field.isSecureTextEntry = true
+        field.backgroundColor = .secondarySystemBackground
+        field.layer.cornerRadius = 8
+        field.layer.masksToBounds = true
+        return field
+    }()
+    
+    
     // Sign in button
     
+    private let signInButtom: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemBlue
+        button.setTitle("Sign In", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
     // Create accoutn button
+    
+    private let signInButtom: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemBlue
+        button.setTitle("Sign In", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "Sign In"
         view.backgroundColor = .systemBackground
         view.addSubview(headerView)
@@ -41,6 +72,6 @@ class SignInViewController: UIViewController {
         super.viewDidLayoutSubviews()
         headerView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height/5)
     }
-
-
+    
+    
 }
