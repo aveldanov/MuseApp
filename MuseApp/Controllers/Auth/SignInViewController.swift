@@ -53,7 +53,6 @@ class SignInViewController: UIViewController {
     
     private let createAccountButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemBlue
         button.setTitle("Create Account", for: .normal)
         button.setTitleColor(.link, for: .normal)
         return button
@@ -80,8 +79,8 @@ class SignInViewController: UIViewController {
         headerView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height/5)
         emailField.frame = CGRect(x: 20, y: headerView.bottom, width: view.width-40, height: 50)
         passwordField.frame = CGRect(x: 20, y: emailField.bottom+10, width: view.width-40, height: 50)
-        signInButton.frame = CGRect(x: 20, y: headerView.bottom, width: view.width-40, height: 50)
-        createAccountButton.frame = CGRect(x: 20, y: headerView.bottom, width: view.width-40, height: 50)
+        signInButton.frame = CGRect(x: 20, y: passwordField.bottom+10, width: view.width-40, height: 50)
+        createAccountButton.frame = CGRect(x: 20, y: signInButton.bottom+40, width: view.width-40, height: 50)
     }
     
     
