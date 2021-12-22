@@ -94,6 +94,7 @@ class SignInViewController: UIViewController {
     @objc func didTapCreateButton(){
         let vc = SignUpViewController()
         vc.title = "Create Account"
+        vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }
     
