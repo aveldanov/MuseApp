@@ -41,7 +41,7 @@ class SignInViewController: UIViewController {
     
     // Sign in button
     
-    private let signInButtom: UIButton = {
+    private let signInButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemBlue
         button.setTitle("Sign In", for: .normal)
@@ -51,11 +51,11 @@ class SignInViewController: UIViewController {
     
     // Create accoutn button
     
-    private let signInButtom: UIButton = {
+    private let createAccountButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemBlue
-        button.setTitle("Sign In", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Create Account", for: .normal)
+        button.setTitleColor(.link, for: .normal)
         return button
     }()
     
@@ -66,6 +66,13 @@ class SignInViewController: UIViewController {
         title = "Sign In"
         view.backgroundColor = .systemBackground
         view.addSubview(headerView)
+        view.addSubview(emailField)
+        view.addSubview(passwordField)
+        view.addSubview(signInButton)
+        view.addSubview(createAccountButton)
+        
+        signInButton.addTarget(self, action: #selector(didTapSignInButton), for: .touchUpInside)
+        createAccountButton.addTarget(self, action: #selector(didTapCreateButton), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -73,5 +80,14 @@ class SignInViewController: UIViewController {
         headerView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height/5)
     }
     
+    
+    @objc func didTapSignInButton(){
+        
+    }
+    
+    
+    @objc func didTapCreateButton(){
+        
+    }
     
 }
