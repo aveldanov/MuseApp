@@ -98,10 +98,15 @@ class SignUpViewController: UIViewController {
     @objc func didTapSignUpButton(){
         guard let email = emailField.text, !email.isEmpty,
               let password = passwordField.text, !password.isEmpty,
-              let name = nameField.text, !name.isEmpty{
-                  
-                  
-                  
+              let name = nameField.text, !name.isEmpty else{
+                  return
               }
+        // Create User
+        
+        // Update Database
+        
+        
+        
+        
     }
 }
