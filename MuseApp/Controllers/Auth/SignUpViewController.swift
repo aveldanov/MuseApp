@@ -102,7 +102,9 @@ class SignUpViewController: UIViewController {
                   return
               }
         // Create User
-        
+        AuthManager.shared.signUp(email: email, password: password) { success in
+            
+        }
         // Update Database
         
         
