@@ -102,10 +102,31 @@ class SignUpViewController: UIViewController {
                   return
               }
         // Create User
-        AuthManager.shared.signUp(email: email, password: password) { success in
+        AuthManager.shared.signUp(email: email, password: password) {[weak self] success in
+            // Update Database
+        if success{
+            
+            let newUser = User(name: name, email: email, profilePictureURL: nil)
+            
+            DatabaseManager.shared.insertUser(user: newUser) { inserted in
+                guard inserted else{
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    let vc = TabBarViewController()
+                    vc.modalPresentationStyle = .fullScreen
+                    self?.present(vc, animated: true, completion: nil)
+                }
+                
+                
+            }
+            
+            
+        }else{
+            print("Failed to create account")
             
         }
-        // Update Database
         
         
         

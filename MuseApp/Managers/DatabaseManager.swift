@@ -32,7 +32,20 @@ final class DatabaseManager{
     }
     
     public func insertUser(user: User, completion: @escaping (Bool)->Void){
+        let documentID = user.email
+            .replacingOccurrences(of: ".", with: "_")
+            .replacingOccurrences(of: "@", with: "_")
         
+        let data = [
+            "email": user.email,
+            "name": user.name
+        ]
+        database
+            .collection("users")
+            .document(documentID)
+            .setData([:]) { error in
+                completion(error == nil)
+            }
         
     }
     
