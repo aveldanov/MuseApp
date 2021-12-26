@@ -27,6 +27,10 @@ class ProfileViewController: UIViewController {
             AuthManager.shared.signOut { [weak self] success in
                 if success{
                     DispatchQueue.main.async {
+//                        reset userdefaults upon sign out
+                        UserDefaults.standard.set(nil, forKey: "email")
+                        UserDefaults.standard.set(nil, forKey: "name")
+
                         let signinVC = SignInViewController()
                         signinVC.navigationItem.largeTitleDisplayMode = .always
                         

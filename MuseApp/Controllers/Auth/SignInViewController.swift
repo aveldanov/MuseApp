@@ -92,6 +92,24 @@ class SignInViewController: UIViewController {
     
     
     @objc func didTapSignInButton(){
+        guard let email = emailField.text, !email.isEmpty,
+              let password = passwordField.text, !password.isEmpty else{
+                  return
+              }
+        AuthManager.shared.signIn(email: email, password: password) {[weak self] sussess in
+            guard sussess else{
+                return
+            }
+            
+            
+            DispatchQueue.main.async {
+                UserDefaults.standard.set(email, forKey: "email")
+                let vc = TabBarViewController()
+                vc.modalPresentationStyle = .fullScreen
+                self?.present(vc, animated: true, completion: nil)
+            }
+            
+        }
         
     }
     
