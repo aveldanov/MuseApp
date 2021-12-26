@@ -8,10 +8,10 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out",
                                                             style: .done,
@@ -20,21 +20,28 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func didTapSignOut(){
-        AuthManager.shared.signOut { [weak self] success in
-            if success{
-                DispatchQueue.main.async {
-                    let signinVC = SignInViewController()
-                    signinVC.navigationItem.largeTitleDisplayMode = .always
-                    
-                    let navVC = UINavigationController(rootViewController: signinVC)
-                    navVC.navigationBar.prefersLargeTitles = true
-                    navVC.modalPresentationStyle = .fullScreen
-                    self?.present(navVC, animated: true, completion: nil)
+        
+        let alertSheet = UIAlertController(title: "Sign Out", message: nil, preferredStyle: .actionSheet)
+        alertSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertSheet.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { _ in
+            AuthManager.shared.signOut { [weak self] success in
+                if success{
+                    DispatchQueue.main.async {
+                        let signinVC = SignInViewController()
+                        signinVC.navigationItem.largeTitleDisplayMode = .always
+                        
+                        let navVC = UINavigationController(rootViewController: signinVC)
+                        navVC.navigationBar.prefersLargeTitles = true
+                        navVC.modalPresentationStyle = .fullScreen
+                        self?.present(navVC, animated: true, completion: nil)
+                    }
                 }
             }
-        }
+            
+        }))
+        present(alertSheet, animated: true, completion: nil)
         
     }
- 
-
+    
+    
 }
