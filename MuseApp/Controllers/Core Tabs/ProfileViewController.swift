@@ -36,15 +36,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
 
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupSignOutButton()
         setupTable()
-
+        title = currentEmail
     }
     
     override func viewDidLayoutSubviews() {

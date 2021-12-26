@@ -17,10 +17,12 @@ class TabBarViewController: UITabBarController {
     
     private func setupControllers(){
         
-        guard let currentUserEmail = UserDefaults.standard.string(forKey: "email")
+        guard let currentUserEmail = UserDefaults.standard.string(forKey: "email") else{
+            return
+        }
         
         let homeVC = HomeViewController()
-        let profileVC = ProfileViewController()
+        let profileVC = ProfileViewController(currentEmail: currentUserEmail)
         
         homeVC.title = "Home"
         profileVC.title = "Profile"
