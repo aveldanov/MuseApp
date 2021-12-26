@@ -20,6 +20,8 @@ class SignInViewController: UIViewController {
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
         field.leftViewMode = .always
         field.placeholder = "Email Address"
+        field.autocapitalizationType = .none
+        field.autocorrectionType = .no
         field.backgroundColor = .secondarySystemBackground
         field.layer.cornerRadius = 8
         field.layer.masksToBounds = true
@@ -30,9 +32,12 @@ class SignInViewController: UIViewController {
     
     private let passwordField: UITextField = {
         let field = UITextField()
+        
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
         field.leftViewMode = .always
         field.placeholder = "Password"
+        field.autocapitalizationType = .none
+        field.autocorrectionType = .no
         field.isSecureTextEntry = true
         field.backgroundColor = .secondarySystemBackground
         field.layer.cornerRadius = 8
