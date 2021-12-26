@@ -8,7 +8,7 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
+    
     
     // Header View
     private let headerView = SignInHeaderView()
@@ -65,7 +65,7 @@ class SignUpViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         return button
     }()
-
+    
     
     
     override func viewDidLoad() {
@@ -80,18 +80,18 @@ class SignUpViewController: UIViewController {
         view.addSubview(signUpButton)
         
         signUpButton.addTarget(self, action: #selector(didTapSignUpButton), for: .touchUpInside)
-
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         headerView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height/5)
         nameField.frame = CGRect(x: 20, y: headerView.bottom, width: view.width-40, height: 50)
-
+        
         emailField.frame = CGRect(x: 20, y: nameField.bottom+10, width: view.width-40, height: 50)
         passwordField.frame = CGRect(x: 20, y: emailField.bottom+10, width: view.width-40, height: 50)
         signUpButton.frame = CGRect(x: 20, y: passwordField.bottom+10, width: view.width-40, height: 50)
-
+        
     }
     
     
@@ -104,33 +104,29 @@ class SignUpViewController: UIViewController {
         // Create User
         AuthManager.shared.signUp(email: email, password: password) {[weak self] success in
             // Update Database
-        if success{
-            
-            let newUser = User(name: name, email: email, profilePictureURL: nil)
-            
-            DatabaseManager.shared.insertUser(user: newUser) { inserted in
-                guard inserted else{
-                    return
+            if success{
+                
+                let newUser = User(name: name, email: email, profilePictureURL: nil)
+                
+                DatabaseManager.shared.insertUser(user: newUser) { inserted in
+                    guard inserted else{
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        let vc = TabBarViewController()
+                        vc.modalPresentationStyle = .fullScreen
+                        self?.present(vc, animated: true, completion: nil)
+                    }
+                    
+                    
                 }
                 
-                DispatchQueue.main.async {
-                    let vc = TabBarViewController()
-                    vc.modalPresentationStyle = .fullScreen
-                    self?.present(vc, animated: true, completion: nil)
-                }
                 
+            }else{
+                print("Failed to create account")
                 
             }
-            
-            
-        }else{
-            print("Failed to create account")
-            
         }
-        
-        
-        
-        
     }
-}
 }
