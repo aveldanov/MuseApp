@@ -16,6 +16,9 @@ class TabBarViewController: UITabBarController {
     }
     
     private func setupControllers(){
+        
+        guard let currentUserEmail = UserDefaults.standard.string(forKey: "email")
+        
         let homeVC = HomeViewController()
         let profileVC = ProfileViewController()
         
