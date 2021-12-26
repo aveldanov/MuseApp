@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController {
     
     @objc private func didTapSignOut(){
         
-        let alertSheet = UIAlertController(title: "Sign Out", message: nil, preferredStyle: .actionSheet)
+        let alertSheet = UIAlertController(title: "Sign Out", message: "Are you sure you want to sign out?", preferredStyle: .actionSheet)
         alertSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alertSheet.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { _ in
             AuthManager.shared.signOut { [weak self] success in
