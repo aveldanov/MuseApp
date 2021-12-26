@@ -43,7 +43,7 @@ final class DatabaseManager{
         database
             .collection("users")
             .document(documentID)
-            .setData([:]) { error in
+            .setData(data) { error in
                 completion(error == nil)
             }
         
