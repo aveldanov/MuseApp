@@ -55,7 +55,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         fetchProfileData()
     }
     
-    private func setupTableHeader(profilePhotoURL: URL? = nil, name: String? = nil){
+    private func setupTableHeader(profilePhotoURLRef: URL? = nil, name: String? = nil){
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.width/1.5))
         headerView.backgroundColor = .systemBlue
         headerView.clipsToBounds = true
@@ -85,11 +85,18 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             title = name
         }
         
-        if let url = profilePhotoURL{
+        if let url = profilePhotoURLRef{
             // Fetch image
             
+            DatabaseManager.shared.getUser(email: currentEmail) { user in
+                guard let user = user else{
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.setupTableHeader(profilePhotoURLRef: user.profilePictureUrlReference, name: user.name)
+                }
+            }
         }
-        
     }
     
     
