@@ -110,7 +110,7 @@ class SignUpViewController: UIViewController {
             // Update Database
             if success{
                 
-                let newUser = User(name: name, email: email, profilePictureURL: nil)
+                let newUser = User(name: name, email: email, profilePictureUrlReference: nil)
                 
                 DatabaseManager.shared.insertUser(user: newUser) { inserted in
                     guard inserted else{

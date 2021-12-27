@@ -52,9 +52,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         setupTableHeader()
+        fetchProfileData()
     }
     
-    private func setupTableHeader(){
+    private func setupTableHeader(profilePhotoURL: URL? = nil, name: String? = nil){
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.width/1.5))
         headerView.backgroundColor = .systemBlue
         headerView.clipsToBounds = true
@@ -80,10 +81,22 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         // Name
-
+        if let name = name{
+            title = name
+        }
+        
+        if let url = profilePhotoURL{
+            // Fetch image
+            
+        }
         
     }
     
+    
+    private func fetchProfileData(){
+        
+        
+    }
     
     private func setupSignOutButton(){
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out",
