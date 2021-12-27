@@ -51,6 +51,18 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        setupTableHeader()
+    }
+    
+    private func setupTableHeader(){
+        let headerView = UIView(frame: CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>))
+        // Profile Pict
+        
+        // Name
+        
+        // Email
+        
+        
     }
     
     
