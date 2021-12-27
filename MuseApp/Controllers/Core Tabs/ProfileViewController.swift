@@ -55,24 +55,32 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     private func setupTableHeader(){
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.width))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.width/1.5))
         headerView.backgroundColor = .systemBlue
         headerView.clipsToBounds = true
         tableView.tableHeaderView = headerView
         
         // Profile Pict
-        let profilePhoto = UIImageView(image: UIImage(systemName: "person"))
+        let profilePhoto = UIImageView(image: UIImage(systemName: "person.circle"))
         profilePhoto.tintColor = .white
         profilePhoto.contentMode = .scaleAspectFit
         profilePhoto.frame = CGRect(x: (view.width-(view.width/4))/2,
-                                    y: (headerView.height-(view.width/4))/1.8,
+                                    y: (headerView.height-(view.width/4))/2.5,
                                     width: view.width/4,
                                     height: view.width/4)
         headerView.addSubview(profilePhoto)
-        // Name
         
         // Email
         
+        let emailLabel = UILabel(frame: CGRect(x: 20, y: profilePhoto.bottom+30, width: view.width-40, height: 100))
+        headerView.addSubview(emailLabel)
+        emailLabel.text = currentEmail
+        emailLabel.textAlignment = .center
+        emailLabel.font = .systemFont(ofSize: 24, weight: .bold)
+        
+        
+        // Name
+
         
     }
     
