@@ -34,21 +34,18 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupSignOutButton()
         setupTable()
-        title = currentEmail
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
-    
     
     private func setupTable(){
         view.addSubview(tableView)
@@ -92,9 +89,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         present(alertSheet, animated: true, completion: nil)
         
     }
-    
-    
-    
+
      //MARK: TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,6 +103,4 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.textLabel?.text = "Blog Post Goes Here"
         return cell
     }
-    
-    
 }
