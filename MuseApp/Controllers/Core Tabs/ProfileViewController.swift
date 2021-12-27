@@ -55,9 +55,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     private func setupTableHeader(){
-        let headerView = UIView(frame: CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>))
-        // Profile Pict
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.width))
+        headerView.backgroundColor = .systemBlue
+        headerView.clipsToBounds = true
+        tableView.tableHeaderView = headerView
         
+        // Profile Pict
+        let profilePhoto = UIImageView(image: UIImage(systemName: "person"))
+        profilePhoto.tintColor = .white
+        profilePhoto.contentMode = .scaleAspectFit
+        profilePhoto.frame = CGRect(x: (view.width-(view.width/4))/2,
+                                    y: (headerView.height-(view.width/4))/1.8,
+                                    width: view.width/4,
+                                    height: view.width/4)
+        headerView.addSubview(profilePhoto)
         // Name
         
         // Email
