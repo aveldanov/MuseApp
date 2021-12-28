@@ -105,7 +105,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         picker.sourceType = .photoLibrary
         picker.delegate = self
         picker.allowsEditing = true
-        
+        present(picker, animated: true, completion: nil)
     }
     
     
@@ -172,4 +172,22 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.textLabel?.text = "Blog Post Goes Here"
         return cell
     }
+}
+
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else{
+            return
+        }
+        
+        StorageManager.shared.uploadUserProfilePicture(email: currentEmail, image: <#T##UIImage?#>, completion: <#T##(Bool) -> Void#>)
+        
+    }
+    
 }
