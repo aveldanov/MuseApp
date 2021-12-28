@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // List of Posts
     
+    private var user: User?
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -40,6 +41,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         view.backgroundColor = .systemBackground
         setupSignOutButton()
         setupTable()
+        title = "Profile"
     }
     
     override func viewDidLayoutSubviews() {
@@ -55,9 +57,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         fetchProfileData()
     }
     
-    private func setupTableHeader(profilePhotoURLRef: URL? = nil, name: String? = nil){
+    private func setupTableHeader(profilePhotoURLRef: String? = nil, name: String? = nil){
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.width/1.5))
         headerView.backgroundColor = .systemBlue
+        headerView.isUserInteractionEnabled = true
         headerView.clipsToBounds = true
         tableView.tableHeaderView = headerView
         
@@ -69,12 +72,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                                     y: (headerView.height-(view.width/4))/2.5,
                                     width: view.width/4,
                                     height: view.width/4)
+        profilePhoto.isUserInteractionEnabled = true
         headerView.addSubview(profilePhoto)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapProfilePhoto))
+        profilePhoto.addGestureRecognizer(tap)
         
         // Email
         
-        let emailLabel = UILabel(frame: CGRect(x: 20, y: profilePhoto.bottom+30, width: view.width-40, height: 100))
+        let emailLabel = UILabel(frame: CGRect(x: 20, y: profilePhoto.bottom+10, width: view.width-40, height: 100))
         headerView.addSubview(emailLabel)
+        emailLabel.textColor = .white
         emailLabel.text = currentEmail
         emailLabel.textAlignment = .center
         emailLabel.font = .systemFont(ofSize: 24, weight: .bold)
@@ -88,20 +96,30 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let url = profilePhotoURLRef{
             // Fetch image
             
-            DatabaseManager.shared.getUser(email: currentEmail) { user in
-                guard let user = user else{
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.setupTableHeader(profilePhotoURLRef: user.profilePictureUrlReference, name: user.name)
-                }
-            }
         }
+    }
+    
+    
+    @objc private func didTapProfilePhoto(){
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        
     }
     
     
     private func fetchProfileData(){
         
+        DatabaseManager.shared.getUser(email: currentEmail) {[weak self] user in
+            guard let user = user else{
+                return
+            }
+            self?.user = user
+            DispatchQueue.main.async {
+                self?.setupTableHeader(profilePhotoURLRef: user.profilePictureUrlReference, name: user.name)
+            }
+        }
         
     }
     
