@@ -16,6 +16,13 @@ final class StorageManager{
     
     
     public func uploadUserProfilePicture(email: String, image: UIImage?, completion: @escaping (Bool)->Void){
+        let path = email
+            .replacingOccurrences(of: "@", with: "_")
+            .replacingOccurrences(of: ".", with: "_")
+        guard let pngData = image?.pngData() else{
+            return
+        }
+        container.reference(withPath: "profile_pictures/")
         
     }
     

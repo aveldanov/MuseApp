@@ -107,7 +107,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             return
         }
         
-        
         let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
         picker.delegate = self
@@ -189,6 +188,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
         guard let image = info[.editedImage] as? UIImage else{
             return
         }
