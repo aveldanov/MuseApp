@@ -22,6 +22,8 @@ final class StorageManager{
         guard let pngData = image?.pngData() else{
             return
         }
+        
+        
         container
             .reference(withPath: "profile_pictures/\(path)/photo.png")
             .putData(pngData, metadata: nil) { metadata, error in

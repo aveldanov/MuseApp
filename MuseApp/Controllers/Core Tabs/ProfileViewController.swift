@@ -194,7 +194,19 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         
         StorageManager.shared.uploadUserProfilePicture(email: currentEmail,
-                                                       image: image) { success in
+                                                       image: image) { [weak self] success in
+            
+            guard let strongSelf = self else{
+                return
+            }
+            
+            if success{
+                //updare DB
+                DatabaseManager.shared.updateProfilePhoto(email: currentEmail)
+            }else{
+                
+                
+            }
             
         }
         
