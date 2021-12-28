@@ -93,8 +93,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             title = name
         }
         
-        if let url = profilePhotoURLRef{
+        if let ref = profilePhotoURLRef{
             // Fetch image
+            
+            print("Found photo ref: \(ref)")
             
         }
     }
@@ -202,7 +204,21 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             
             if success{
                 //updare DB
-                DatabaseManager.shared.updateProfilePhoto(email: currentEmail)
+                DatabaseManager.shared.updateProfilePhoto(email: strongSelf.currentEmail) { updated in
+                  
+                    guard updated else{
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        strongSelf.fetchProfileData()
+                    }
+                    
+                    
+                }
+                
+                
+                
             }else{
                 
                 
