@@ -186,7 +186,10 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             return
         }
         
-        StorageManager.shared.uploadUserProfilePicture(email: currentEmail, image: <#T##UIImage?#>, completion: <#T##(Bool) -> Void#>)
+        StorageManager.shared.uploadUserProfilePicture(email: currentEmail,
+                                                       image: image) { success in
+            
+        }
         
     }
     
