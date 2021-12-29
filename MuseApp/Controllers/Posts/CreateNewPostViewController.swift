@@ -12,6 +12,11 @@ class CreateNewPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        configureButtons()
+    }
+    
+    
+    private func configureButtons(){
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel",
                                                            style: .done,
                                                            target: self,
@@ -25,10 +30,12 @@ class CreateNewPostViewController: UIViewController {
     
     
     @objc private func didTapCancel(){
-        
+        dismiss(animated: true, completion: nil)
     }
 
     @objc private func didTapPost(){
+        // check data and make a post
+        
         
     }
 
