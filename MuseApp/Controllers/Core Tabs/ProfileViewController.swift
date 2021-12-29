@@ -210,6 +210,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
         
         let vc = ViewPostViewController()
+        vc.title = posts[indexPath.row].title
         navigationController?.pushViewController(vc, animated: true)
     }
 }
