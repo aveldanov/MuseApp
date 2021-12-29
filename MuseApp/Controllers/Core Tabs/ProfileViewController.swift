@@ -72,6 +72,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                                     y: (headerView.height-(view.width/4))/2.5,
                                     width: view.width/4,
                                     height: view.width/4)
+        profilePhoto.layer.masksToBounds = true
+        profilePhoto.layer.cornerRadius = profilePhoto.width/2
         profilePhoto.isUserInteractionEnabled = true
         headerView.addSubview(profilePhoto)
         
@@ -185,16 +187,30 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
      //MARK: TableView
     
+    private var posts: [BlogPost] = []
+    
+    private func fetchPosts(){
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
+        let post = posts[indexPath.row]
         cell.textLabel?.text = "Blog Post Goes Here"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let vc = ViewPostViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
