@@ -36,9 +36,12 @@ final class StorageManager{
     }
     
     
-    public func getProfilePictureURL(user: User, completion: @escaping (URL?)->Void){
+    public func getProfilePictureURL(path: String, completion: @escaping (URL?)->Void){
         
-        
+        container.reference(withPath: path)
+            .downloadURL { url, error in
+                completion(url)
+            }
     }
     
     

@@ -96,7 +96,23 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let ref = profilePhotoURLRef{
             // Fetch image
             
-            print("Found photo ref: \(ref)")
+            StorageManager.shared.getProfilePictureURL(path: ref) { url in
+                guard let url = url else {
+                    return
+                }
+                
+                URLSession.shared.dataTask(with: url) { data, response, error in
+                    guard let data = data else{
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        profilePhoto.image = UIImage(data: data)
+                    }
+                    
+                }.resume()
+
+            }
             
         }
     }
