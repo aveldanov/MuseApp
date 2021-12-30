@@ -45,6 +45,9 @@ class CreateNewPostViewController: UIViewController {
     }()
     
     
+    private var selectedHeaderImage: UIImage?
+    
+    
     
     
     override func viewDidLoad() {
@@ -55,6 +58,16 @@ class CreateNewPostViewController: UIViewController {
         view.addSubview(textView)
 
         configureButtons()
+    }
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        postTitleField.frame = CGRect(x: 10, y: view.safeAreaInsets.top, width: view.width-20, height: 50)
+        headerImageView.frame = CGRect(x: 0, y: postTitleField.bottom+5, width: view.width, height: 160)
+        textView.frame = CGRect(x: 10, y: headerImageView.bottom+10, width: view.width-20, height: view.height-210-view.safeAreaInsets.top)
+        
     }
     
     
