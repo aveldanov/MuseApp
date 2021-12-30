@@ -25,13 +25,14 @@ final class DatabaseManager{
             "title": blogPost.title,
             "body": blogPost.text,
             "createdOn": blogPost.timestamp,
-            "headerImageUrl": blogPost.headerImageURL?.absoluteString
+            "headerImageUrl": blogPost.headerImageURL?.absoluteString ?? ""
         ]
         
         database
             .collection("users")
-            .document(documentID)
-            .setData(data) { error in
+            .document(userEmail)
+            .collection("posts")
+            .addDocument(data: data) { error in
                 completion(error == nil)
             }
         
