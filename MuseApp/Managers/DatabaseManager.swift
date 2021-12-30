@@ -36,7 +36,7 @@ final class DatabaseManager{
                 completion(error == nil)
             }
         
-        
+      
     }
     
     public func getAllPosts(completion: @escaping ([BlogPost])->Void){

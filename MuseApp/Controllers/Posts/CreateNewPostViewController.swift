@@ -124,6 +124,11 @@ class CreateNewPostViewController: UIViewController {
               let email = UserDefaults.standard.string(forKey: "email"),
               !title.trimmingCharacters(in: .whitespaces).isEmpty,
               !body.trimmingCharacters(in: .whitespaces).isEmpty else{
+                  
+                  let alert = UIAlertController(title: "Enter Post Details", message: "Add title, body, and upload an image to continue", preferredStyle: .alert)
+                  alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                  
+                  present(alert, animated: true, completion: nil)
                   return
               }
         // Upload header image
@@ -138,6 +143,7 @@ class CreateNewPostViewController: UIViewController {
             StorageManager.shared.getPostHeaderURL(email: email,
                                                    postId: newPostId) { url in
                 guard let headerUrl = url else {
+                    print("Failed to upload URL for header")
                     return
                 }
                 
@@ -147,6 +153,16 @@ class CreateNewPostViewController: UIViewController {
                                     timestamp: Date().timeIntervalSince1970,
                                     headerImageURL: headerUrl,
                                     text: body)
+                
+                DatabaseManager.shared.insert(blogPost: post, email: email) {[weak self] posted in
+                    guard posted else{
+                        print("Failed to post new Blog Article")
+                        return
+                    }
+                
+                    self?.didTapCancel()
+                    
+                }
 
             }
             
