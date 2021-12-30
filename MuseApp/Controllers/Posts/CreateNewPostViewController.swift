@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 class CreateNewPostViewController: UIViewController {
 
@@ -28,6 +29,7 @@ class CreateNewPostViewController: UIViewController {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
+        imageView.layer.masksToBounds = true
         imageView.image = UIImage(systemName: "photo")
         imageView.backgroundColor = .tertiarySystemBackground
         
@@ -57,6 +59,8 @@ class CreateNewPostViewController: UIViewController {
         view.addSubview(headerImageView)
         view.addSubview(textView)
 
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapHeader))
+        headerImageView.addGestureRecognizer(tap)
         configureButtons()
     }
     
@@ -69,6 +73,29 @@ class CreateNewPostViewController: UIViewController {
         textView.frame = CGRect(x: 10, y: headerImageView.bottom+10, width: view.width-20, height: view.height-210-view.safeAreaInsets.top)
         
     }
+    
+    
+    
+    @objc private func didTapHeader(){
+        if #available(iOS 14, *) {
+            let config = PHPickerConfiguration()
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+            print("YO WORKED")
+            present(picker, animated: true, completion: nil)
+
+        } else {
+            // Fallback on earlier versions
+            let picker = UIImagePickerController()
+            picker.sourceType  = .photoLibrary
+            picker.delegate = self
+            print("NOPE WORKED")
+
+            present(picker, animated: true, completion: nil)
+        }
+        
+    }
+
     
     
     private func configureButtons(){
@@ -91,7 +118,60 @@ class CreateNewPostViewController: UIViewController {
     @objc private func didTapPost(){
         // check data and make a post
         
+        guard let title = postTitleField.text, let body = textView.text, let headerImage = selectedHeaderImage, !title.trimmingCharacters(in: .whitespaces).isEmpty,!body.trimmingCharacters(in: .whitespaces).isEmpty else{
+            return
+        }
+        // Upload header image
+        
+        // Insert Post to DB
+        let post = BlogPost(id: UUID().uuidString, title: title, timestamp: Date().timeIntervalSince1970, headerImageURL: nil, text: body)
         
     }
 
+}
+
+
+extension CreateNewPostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[.originalImage] as? UIImage else{
+            return
+        }
+        
+        selectedHeaderImage = image
+        headerImageView.image = image
+    }
+    
+}
+
+
+@available(iOS 14, *)
+extension CreateNewPostViewController: PHPickerViewControllerDelegate{
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        
+        picker.dismiss(animated: true, completion: nil)
+
+        let itemProviders = results.map(\.itemProvider)
+        for item in itemProviders {
+            if item.canLoadObject(ofClass: UIImage.self) {
+                item.loadObject(ofClass: UIImage.self) { (image, error) in
+                    DispatchQueue.main.async {
+                        if let image = image as? UIImage {
+                            self.selectedHeaderImage = image
+                            self.headerImageView.image = image
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    
+    
+    
+    
 }
