@@ -9,9 +9,51 @@ import UIKit
 
 class CreateNewPostViewController: UIViewController {
 
+    // title field
+    
+    private let postTitleField: UITextField = {
+        let field = UITextField()
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
+        field.leftViewMode = .always
+        field.placeholder = "Enter title..."
+        field.autocapitalizationType = .words
+        field.autocorrectionType = .yes
+        field.backgroundColor = .secondarySystemBackground
+        field.layer.masksToBounds = true
+        return field
+    }()
+    
+    // image
+    private let headerImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
+        imageView.image = UIImage(systemName: "photo")
+        imageView.backgroundColor = .tertiarySystemBackground
+        
+        return imageView
+    }()
+    
+    // textview for post
+    
+    private let textView: UITextView = {
+        let textView = UITextView()
+        textView.backgroundColor = .secondarySystemBackground
+        textView.isEditable = true
+        textView.font = .systemFont(ofSize: 28)
+        return textView
+    }()
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        view.addSubview(postTitleField)
+        view.addSubview(headerImageView)
+        view.addSubview(textView)
+
         configureButtons()
     }
     
