@@ -118,13 +118,42 @@ class CreateNewPostViewController: UIViewController {
     @objc private func didTapPost(){
         // check data and make a post
         
-        guard let title = postTitleField.text, let body = textView.text, let headerImage = selectedHeaderImage, !title.trimmingCharacters(in: .whitespaces).isEmpty,!body.trimmingCharacters(in: .whitespaces).isEmpty else{
-            return
-        }
+        guard let title = postTitleField.text,
+              let body = textView.text,
+              let headerImage = selectedHeaderImage,
+              let email = UserDefaults.standard.string(forKey: "email"),
+              !title.trimmingCharacters(in: .whitespaces).isEmpty,
+              !body.trimmingCharacters(in: .whitespaces).isEmpty else{
+                  return
+              }
         // Upload header image
+        let newPostId = UUID().uuidString
+        StorageManager.shared.uploadBlogHeaderImage(email: email,
+                                                    image: headerImage,
+                                                    postId: newPostId) { success in
+            guard success else{
+                return
+            }
+            
+            StorageManager.shared.getPostHeaderURL(email: email,
+                                                   postId: newPostId) { url in
+                guard let headerUrl = url else {
+                    return
+                }
+                
+                // Insert Post to DB
+                let post = BlogPost(id: newPostId,
+                                    title: title,
+                                    timestamp: Date().timeIntervalSince1970,
+                                    headerImageURL: headerUrl,
+                                    text: body)
+
+            }
+            
+        }
         
-        // Insert Post to DB
-        let post = BlogPost(id: UUID().uuidString, title: title, timestamp: Date().timeIntervalSince1970, headerImageURL: nil, text: body)
+        
+
         
     }
 

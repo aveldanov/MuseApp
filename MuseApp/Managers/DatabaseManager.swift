@@ -15,7 +15,25 @@ final class DatabaseManager{
     private let database = Firestore.firestore()
     
     
-    public func insert(with blogPost: BlogPost, user: User, completion: @escaping (Bool)->Void){
+    public func insert(blogPost: BlogPost, email: String, completion: @escaping (Bool)->Void){
+        let userEmail = email
+            .replacingOccurrences(of: ".", with: "_")
+            .replacingOccurrences(of: "@", with: "_")
+        
+        let data:[String: Any] = [
+            "id": blogPost.id,
+            "title": blogPost.title,
+            "body": blogPost.text,
+            "createdOn": blogPost.timestamp,
+            "headerImageUrl": blogPost.headerImageURL?.absoluteString
+        ]
+        
+        database
+            .collection("users")
+            .document(documentID)
+            .setData(data) { error in
+                completion(error == nil)
+            }
         
         
     }
