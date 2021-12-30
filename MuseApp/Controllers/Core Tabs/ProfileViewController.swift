@@ -43,6 +43,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         view.backgroundColor = .systemBackground
         setupSignOutButton()
         setupTable()
+        fetchPosts()
         title = "Profile"
     }
     
@@ -192,13 +193,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func fetchPosts(){
         
-        guard let email = user?.email else{
-            return
-        }
-        
-        DatabaseManager.shared.getPostsForUser(for: email) {[weak self] posts in
+        DatabaseManager.shared.getPostsForUser(for: currentEmail) {[weak self] posts in
             self?.posts = posts
-            
+            print("[ProfileViewController] post count \(posts.count)")
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }

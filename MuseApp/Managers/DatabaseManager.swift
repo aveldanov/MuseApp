@@ -19,7 +19,6 @@ final class DatabaseManager{
         let userEmail = email
             .replacingOccurrences(of: ".", with: "_")
             .replacingOccurrences(of: "@", with: "_")
-        
         let data:[String: Any] = [
             "id": blogPost.id,
             "title": blogPost.title,
@@ -50,7 +49,8 @@ final class DatabaseManager{
         let userEmail = email
             .replacingOccurrences(of: ".", with: "_")
             .replacingOccurrences(of: "@", with: "_")
-        
+        print("[DatabaseManager] email \(userEmail)")
+
         database
             .collection("users")
             .document(userEmail)
@@ -59,13 +59,13 @@ final class DatabaseManager{
                 guard let documents = snapshot?.documents.compactMap({$0.data()}), error == nil else{
                     return
                 }
-                
                 let posts: [BlogPost] = documents.compactMap({ dict in
-                    
+                    print("[DatabaseManager] posts \(dict)")
+
                     guard let id = dict["id"] as? String,
                           let title = dict["title"] as? String,
                           let body = dict["body"] as? String,
-                          let created = dict["created"] as? TimeInterval,
+                          let created = dict["createdOn"] as? TimeInterval,
                           let imageUrlString = dict["headerImageUrl"] as? String else{
                               print("Invalid post fetch")
                               return nil
@@ -78,6 +78,8 @@ final class DatabaseManager{
                                         headerImageURL: URL(string: imageUrlString),
                                         text: body)
                     
+                    print("[DatabaseManager] posts \(post)")
+
                     return post
                 })
                 
