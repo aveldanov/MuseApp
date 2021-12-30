@@ -32,11 +32,12 @@ final class DatabaseManager{
             .collection("users")
             .document(userEmail)
             .collection("posts")
-            .addDocument(data: data) { error in
+            .document(blogPost.id)
+            .setData(data) { error in
                 completion(error == nil)
             }
         
-      
+        
     }
     
     public func getAllPosts(completion: @escaping ([BlogPost])->Void){
@@ -45,8 +46,43 @@ final class DatabaseManager{
     }
     
     
-    public func getPosts(for user: User, completion: @escaping ([BlogPost])->Void){
+    public func getPostsForUser(for email: String, completion: @escaping ([BlogPost])->Void){
+        let userEmail = email
+            .replacingOccurrences(of: ".", with: "_")
+            .replacingOccurrences(of: "@", with: "_")
         
+        database
+            .collection("users")
+            .document(userEmail)
+            .collection("posts")
+            .getDocuments { snapshot, error in
+                guard let documents = snapshot?.documents.compactMap({$0.data()}), error == nil else{
+                    return
+                }
+                
+                let posts: [BlogPost] = documents.compactMap({ dict in
+                    
+                    guard let id = dict["id"] as? String,
+                          let title = dict["title"] as? String,
+                          let body = dict["body"] as? String,
+                          let created = dict["created"] as? TimeInterval,
+                          let imageUrlString = dict["headerImageUrl"] as? String else{
+                              print("Invalid post fetch")
+                              return nil
+                          }
+                    
+                    
+                    let post = BlogPost(id: id,
+                                        title: title,
+                                        timestamp: created,
+                                        headerImageURL: URL(string: imageUrlString),
+                                        text: body)
+                    
+                    return post
+                })
+                
+                completion(posts)
+            }
         
     }
     
@@ -83,11 +119,11 @@ final class DatabaseManager{
                 }
                 
                 let ref = data["profile_photo"]
-             
+                
                 
                 let user = User(name: name, email: email, profilePictureUrlReference: ref)
                 
-                 completion(user)
+                completion(user)
             }
         
         
@@ -102,7 +138,7 @@ final class DatabaseManager{
         let dbRef = database
             .collection("users")
             .document(path)
-
+        
         dbRef.getDocument { snapshot, error in
             guard var data = snapshot?.data(), error == nil else{
                 return

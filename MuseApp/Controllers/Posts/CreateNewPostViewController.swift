@@ -29,7 +29,7 @@ class CreateNewPostViewController: UIViewController {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
-        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
         imageView.image = UIImage(systemName: "photo")
         imageView.backgroundColor = .tertiarySystemBackground
         

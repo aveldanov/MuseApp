@@ -18,6 +18,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     // List of Posts
     
     private var user: User?
+    private var posts: [BlogPost] = []
+
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -187,9 +189,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
      //MARK: TableView
     
-    private var posts: [BlogPost] = []
     
     private func fetchPosts(){
+        
+        guard let email = user?.email else{
+            return
+        }
+        
+        DatabaseManager.shared.getPostsForUser(for: email) {[weak self] posts in
+            self?.posts = posts
+            
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
         
     }
     
@@ -202,7 +215,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         let post = posts[indexPath.row]
-        cell.textLabel?.text = "Blog Post Goes Here"
+        cell.textLabel?.text = post.title
         return cell
     }
     
