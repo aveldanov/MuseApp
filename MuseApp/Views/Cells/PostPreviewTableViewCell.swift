@@ -7,6 +7,20 @@
 
 import UIKit
 
+
+class PostPreviewTableViewCellViewModel{
+    let title: String
+    let imageUrl: URL?
+    var imageData: Data?
+    
+    init(title: String, imageUrl: URL?){
+        self.title = title
+        self.imageUrl = imageUrl
+    }
+    
+    
+}
+
 class PostPreviewTableViewCell: UITableViewCell {
 
     static let identifier = "PostHeaderTableViewCell"
@@ -41,9 +55,14 @@ class PostPreviewTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        postTitleLabel.frame = CGRect(x: separatorInset.left,
+        postImageView.frame = CGRect(x: separatorInset.left,
                                       y: 5,
                                       width: contentView.height-10,
+                                      height: contentView.height-10)
+        
+        postTitleLabel.frame = CGRect(x: postImageView.right+5,
+                                      y: 5,
+                                      width: contentView.width-5-separatorInset.left-postImageView.width,
                                       height: contentView.height-10)
     }
     
@@ -55,8 +74,24 @@ class PostPreviewTableViewCell: UITableViewCell {
         
     }
     
-    func configureCell(with string: String){
+    func configureCell(with viewModel: PostPreviewTableViewCellViewModel){
+        postTitleLabel.text = viewModel.title
         
+        if let data = viewModel.imageData{
+            postImageView.image = UIImage(data: data)
+        }else if let url = viewModel.imageUrl{
+            //Fetch image and cache it
+            URLSession.shared.dataTask(with: url) {[weak self] data, response, error in
+                guard let data = data, error == nil else {
+                    return
+                }
+                //caching as part of VM
+                viewModel.imageData = data
+                DispatchQueue.main.async {
+                    self?.postImageView.image = UIImage(data: data)
+                }
+            }.resume()
+        }
     }
     
 }
