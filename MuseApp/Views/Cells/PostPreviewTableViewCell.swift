@@ -43,7 +43,7 @@ class PostPreviewTableViewCell: UITableViewCell {
         super.layoutSubviews()
         postTitleLabel.frame = CGRect(x: separatorInset.left,
                                       y: 5,
-                                      width: <#T##CGFloat#>,
+                                      width: contentView.height-10,
                                       height: contentView.height-10)
     }
     
