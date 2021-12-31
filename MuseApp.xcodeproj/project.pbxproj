@@ -33,6 +33,8 @@
 		212BC0EE2766913E00B5A0A1 /* PayWallDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212BC0ED2766913E00B5A0A1 /* PayWallDescriptionView.swift */; };
 		212BC0F027669DD400B5A0A1 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 212BC0EF27669DD400B5A0A1 /* StoreKitTestCertificate.cer */; };
 		21327DE52768472000D3214F /* SignInHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21327DE42768472000D3214F /* SignInHeaderView.swift */; };
+		218E7168277E777D001446D3 /* PostPreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218E7167277E777D001446D3 /* PostPreviewTableViewCell.swift */; };
+		218E716A277E7796001446D3 /* PostHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218E7169277E7796001446D3 /* PostHeaderTableViewCell.swift */; };
 		51F95C8B7CA1E76388B7ED0E /* Pods_MuseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519324FBFDFB56654FE1FD74 /* Pods_MuseApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,8 @@
 		212BC0ED2766913E00B5A0A1 /* PayWallDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWallDescriptionView.swift; sourceTree = "<group>"; };
 		212BC0EF27669DD400B5A0A1 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		21327DE42768472000D3214F /* SignInHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHeaderView.swift; sourceTree = "<group>"; };
+		218E7167277E777D001446D3 /* PostPreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewTableViewCell.swift; sourceTree = "<group>"; };
+		218E7169277E7796001446D3 /* PostHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		47072854E5D8EB793CC64C35 /* Pods-MuseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuseApp.debug.xcconfig"; path = "Target Support Files/Pods-MuseApp/Pods-MuseApp.debug.xcconfig"; sourceTree = "<group>"; };
 		519324FBFDFB56654FE1FD74 /* Pods_MuseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MuseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30E7FF58B9C50EC55AFEC55 /* Pods-MuseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MuseApp.release.xcconfig"; path = "Target Support Files/Pods-MuseApp/Pods-MuseApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 		21070C692762F312008CE7AF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				218E7166277E7754001446D3 /* Cells */,
 				21070C5C2762A144008CE7AF /* LaunchScreen.storyboard */,
 				21327DE42768472000D3214F /* SignInHeaderView.swift */,
 				212BC0ED2766913E00B5A0A1 /* PayWallDescriptionView.swift */,
@@ -215,6 +220,15 @@
 				212BC0E62765B5F500B5A0A1 /* PayWallViewController.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		218E7166277E7754001446D3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				218E7167277E777D001446D3 /* PostPreviewTableViewCell.swift */,
+				218E7169277E7796001446D3 /* PostHeaderTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		49B2FD9A790E21E580A27377 /* Pods */ = {
@@ -351,10 +365,12 @@
 				21070C742762FD23008CE7AF /* SignUpViewController.swift in Sources */,
 				21070C522762A141008CE7AF /* AppDelegate.swift in Sources */,
 				212BC0EA2765CCAD00B5A0A1 /* PayWallHeaderView.swift in Sources */,
+				218E716A277E7796001446D3 /* PostHeaderTableViewCell.swift in Sources */,
 				21070C722762FD1A008CE7AF /* SignInViewController.swift in Sources */,
 				21327DE52768472000D3214F /* SignInHeaderView.swift in Sources */,
 				21070C6E2762FCC2008CE7AF /* ProfileViewController.swift in Sources */,
 				212BC0DE2765992F00B5A0A1 /* User.swift in Sources */,
+				218E7168277E777D001446D3 /* PostPreviewTableViewCell.swift in Sources */,
 				21070C782762FD3F008CE7AF /* CreateNewPostViewController.swift in Sources */,
 				21070C7A2762FDC0008CE7AF /* IAPManager.swift in Sources */,
 				21070C702762FCFB008CE7AF /* TabBarViewController.swift in Sources */,
