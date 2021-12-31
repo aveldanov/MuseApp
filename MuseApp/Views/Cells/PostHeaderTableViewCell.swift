@@ -9,6 +9,8 @@ import UIKit
 
 class PostHeaderTableViewCell: UITableViewCell {
 
+    static let identifier = "PostHeaderTableViewCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
