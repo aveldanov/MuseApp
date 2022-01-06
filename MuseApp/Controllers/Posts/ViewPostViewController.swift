@@ -43,9 +43,6 @@ class ViewPostViewController: UIViewController {
         tableView.frame = view.bounds
     }
 
-    
-    
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
