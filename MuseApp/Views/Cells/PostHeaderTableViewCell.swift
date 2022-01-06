@@ -52,7 +52,6 @@ class PostHeaderTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         postImageView.image = nil
-        
     }
     
     func configureCell(with viewModel: PostHeaderTableViewCellViewModel){

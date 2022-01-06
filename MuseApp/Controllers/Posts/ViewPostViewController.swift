@@ -62,24 +62,42 @@ extension ViewPostViewController: UITableViewDelegate, UITableViewDataSource{
         switch index{
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.selectionStyle = .none
             cell.textLabel?.text = post.title
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: PostHeaderTableViewCell.identifier, for: indexPath) as? PostHeaderTableViewCell else{
                 fatalError()
             }
+            cell.selectionStyle = .none
             cell.configureCell(with: .init(imageURL: post.headerImageURL))
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.selectionStyle = .none
             cell.textLabel?.text = post.text
             return cell
         default:
             fatalError()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let index = indexPath.row
+        // 0: title
+        // 1: image
+        // 2: text
         
-        return
-        
+        switch index{
+        case 0:
+            return UITableView.automaticDimension
+        case 1:
+            return 150
+        case 2:
+            return UITableView.automaticDimension
+        default:
+            return UITableView.automaticDimension
+        }
     }
     
 }
