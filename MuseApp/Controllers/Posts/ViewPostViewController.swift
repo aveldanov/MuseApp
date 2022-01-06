@@ -15,7 +15,6 @@ class ViewPostViewController: UIViewController {
         self.post = post
         super.init(nibName: nil, bundle: nil)
     }
-    
 
     private let tableView: UITableView = {
         // title
