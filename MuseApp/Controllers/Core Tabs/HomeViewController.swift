@@ -8,7 +8,6 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
     
     private let composeButton: UIButton = {
         let button = UIButton()
@@ -38,7 +37,6 @@ class HomeViewController: UIViewController {
                                      height: 60)
     }
     
-    
     @objc private func didTapCreate(){
         
         let vc = CreateNewPostViewController()
@@ -46,7 +44,5 @@ class HomeViewController: UIViewController {
         let navVC = UINavigationController(rootViewController: vc)
         present(navVC, animated: true, completion: nil)
     }
-    
-
 }
 

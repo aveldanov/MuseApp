@@ -61,8 +61,11 @@ extension ViewPostViewController: UITableViewDelegate, UITableViewDataSource{
         
         switch index{
         case 0:
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.selectionStyle = .none
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = .systemFont(ofSize: 25, weight: .bold)
             cell.textLabel?.text = post.title
             return cell
         case 1:
@@ -75,6 +78,7 @@ extension ViewPostViewController: UITableViewDelegate, UITableViewDataSource{
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.selectionStyle = .none
+            cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = post.text
             return cell
         default:
