@@ -34,9 +34,6 @@ final class AuthManager{
                 
                 completion(true)
             }
-            
-            
-            
     }
     
     
