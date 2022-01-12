@@ -19,8 +19,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private var user: User?
     private var posts: [BlogPost] = []
-
-    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(PostPreviewTableViewCell.self, forCellReuseIdentifier: PostPreviewTableViewCell.identifier)

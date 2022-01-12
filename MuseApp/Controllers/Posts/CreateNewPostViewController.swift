@@ -49,9 +49,6 @@ class CreateNewPostViewController: UIViewController {
     
     private var selectedHeaderImage: UIImage?
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -73,7 +70,6 @@ class CreateNewPostViewController: UIViewController {
         textView.frame = CGRect(x: 10, y: headerImageView.bottom+10, width: view.width-20, height: view.height-210-view.safeAreaInsets.top)
         
     }
-    
     
     
     @objc private func didTapHeader(){
