@@ -44,7 +44,6 @@ final class DatabaseManager{
         
     }
     
-    
     public func getPostsForUser(for email: String, completion: @escaping ([BlogPost])->Void){
         let userEmail = email
             .replacingOccurrences(of: ".", with: "_")
