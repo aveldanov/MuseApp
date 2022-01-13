@@ -52,7 +52,6 @@ final class AuthManager{
                 }
                 completion(true)
             }
-            
     }
     
     public func signOut(
@@ -65,7 +64,5 @@ final class AuthManager{
                 completion(false)
             }
     }
-    
-    
 }
 

@@ -82,9 +82,6 @@ final class StorageManager{
             .downloadURL { url, error in
                 completion(url)
             }
-        
     }
-    
-    
 }
 

@@ -125,14 +125,9 @@ class SignUpViewController: UIViewController {
                         vc.modalPresentationStyle = .fullScreen
                         self?.present(vc, animated: true, completion: nil)
                     }
-                    
-                    
                 }
-                
-                
             }else{
                 print("Failed to create account")
-                
             }
         }
     }

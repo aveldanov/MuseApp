@@ -44,5 +44,4 @@ class PayWallDescriptionView: UIView {
         priceLabel.frame = CGRect(x: 20, y: height/2, width: width-40, height: height/2)
 
     }
-    
 }
