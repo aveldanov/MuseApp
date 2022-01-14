@@ -90,7 +90,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         emailLabel.textAlignment = .center
         emailLabel.font = .systemFont(ofSize: 24, weight: .bold)
         
-        
         // Name
         if let name = name{
             title = name
@@ -116,7 +115,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }.resume()
 
             }
-            
         }
     }
     
@@ -147,7 +145,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self?.setupTableHeader(profilePhotoURLRef: user.profilePictureUrlReference, name: user.name)
             }
         }
-        
     }
     
     private func setupSignOutButton(){
@@ -183,7 +180,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         }))
         present(alertSheet, animated: true, completion: nil)
-        
     }
 
      //MARK: TableView
@@ -198,7 +194,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self?.tableView.reloadData()
             }
         }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

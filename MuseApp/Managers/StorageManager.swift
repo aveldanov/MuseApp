@@ -64,9 +64,7 @@ final class StorageManager{
                 }
                 completion(true)
             }
-        
     }
-    
     
     
     public func getPostHeaderURL(email: String, postId: String, completion: @escaping (URL?)->Void){

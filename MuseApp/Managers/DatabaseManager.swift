@@ -68,7 +68,6 @@ final class DatabaseManager{
                               return nil
                           }
                     
-                    
                     let post = BlogPost(id: id,
                                         title: title,
                                         timestamp: created,
@@ -82,7 +81,6 @@ final class DatabaseManager{
                 
                 completion(posts)
             }
-        
     }
     
     public func insertUser(user: User, completion: @escaping (Bool)->Void){
@@ -100,7 +98,6 @@ final class DatabaseManager{
             .setData(data) { error in
                 completion(error == nil)
             }
-        
     }
     
     
@@ -124,8 +121,6 @@ final class DatabaseManager{
                 
                 completion(user)
             }
-        
-        
     }
     
     func updateProfilePhoto(email: String, completion: @escaping (Bool)->Void){
