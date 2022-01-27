@@ -40,6 +40,7 @@ final class DatabaseManager{
     public func getAllPosts(completion: @escaping ([BlogPost])->Void){
         
         
+        
     }
     
     public func getPostsForUser(for email: String, completion: @escaping ([BlogPost])->Void){
