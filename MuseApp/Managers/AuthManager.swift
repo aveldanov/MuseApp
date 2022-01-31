@@ -31,7 +31,6 @@ final class AuthManager{
                     completion(false)
                     return
                 }
-                
                 completion(true)
             }
     }
