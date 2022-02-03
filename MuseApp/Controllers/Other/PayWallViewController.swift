@@ -15,7 +15,6 @@ class PayWallViewController: UIViewController {
     
     //TODO:
     // Close button / Title
-    
     // Pricing and produce
     // Call To Action(CTA) Buttons
     
