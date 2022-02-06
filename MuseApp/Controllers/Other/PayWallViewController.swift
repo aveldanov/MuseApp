@@ -11,7 +11,6 @@ class PayWallViewController: UIViewController {
     
     private let header = PayWallHeaderView()
     private let heroView = PayWallDescriptionView()
-    
 
     //TODO:
     // Close button / Title
