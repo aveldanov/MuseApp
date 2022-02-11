@@ -144,7 +144,4 @@ class PayWallViewController: UIViewController {
     @objc private func didTapClose(){
         dismiss(animated: true, completion: nil)
     }
-    
-
-
 }
